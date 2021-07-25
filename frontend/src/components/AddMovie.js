@@ -5,6 +5,10 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 // import cloudinary from "cloudinary-react";
 // import { Cloud } from "cloudinary-core";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import check from "./img/checked.gif";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
 
 function AddMovie() {
   const history = useHistory();
@@ -18,6 +22,8 @@ function AddMovie() {
   const [thumbnailFileId, setThumbnailFileId] = useState(null);
   const [img, setImg] = useState(false);
   const [video, setVideo] = useState(false);
+  const [percent, setPercent] = useState(0);
+  const [isUploading, setIsUploading] = useState(false);
 
   const handleThumbnailUpload = (e) => {
     let maxSize = 2 * 1024; //in kb
@@ -67,9 +73,21 @@ function AddMovie() {
   // const handleMovie = () => {
   //   if (!video) document.getElementById("movies").click();
   // };
-
+  let uploadedPercent = 0;
   const thumbnailFinalUpload = async () => {
+    if (thumbnail) {
+      setIsUploading(true);
+    }
     const config = {
+      onUploadProgress: (progressEvent) => {
+        const { loaded, total } = progressEvent;
+
+        uploadedPercent = Math.floor((loaded * 100) / total);
+
+        if (percent <= 100) {
+          setPercent(uploadedPercent);
+        }
+      },
       headers: {
         "Content-Type": "application/json",
       },
@@ -79,7 +97,8 @@ function AddMovie() {
     const fileID = await axios
       .post("/api/file", formData, config)
       .then((res) => {
-        console.log("Thumbnail uploaded successfully");
+        setPercent(uploadedPercent);
+        alert("Thumbnail uploaded successfully");
         return res.data.fileId;
       })
       .catch((error) => console.log(error));
@@ -192,6 +211,30 @@ function AddMovie() {
   console.log(movie, thumbnail);
   console.log(thumbnailFileId);
   console.log(name, language, year);
+  function CircularProgressWithLabel(props) {
+    return (
+      <Box position="relative" display="inline-flex">
+        <CircularProgress variant="determinate" {...props} />
+        <Box
+          top={0}
+          left={0}
+          bottom={0}
+          right={0}
+          position="absolute"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Typography
+            variant="caption"
+            component="div"
+            color="textSecondary"
+          >{`${Math.round(props.value)}%`}</Typography>
+        </Box>
+      </Box>
+    );
+  }
+
   return (
     <div className="add-movie">
       <div className="add-container">
@@ -199,6 +242,7 @@ function AddMovie() {
           <div className="add-info">
             <h3>Movie Name</h3>
             <input
+              required={true}
               value={name}
               onChange={(e) => setName(e.target.value)}
               type="text"
@@ -209,6 +253,7 @@ function AddMovie() {
           <div className="add-info">
             <h3>Year of Release</h3>
             <input
+              required={true}
               value={year}
               onChange={(e) => setYear(e.target.value)}
               type="month"
@@ -218,9 +263,12 @@ function AddMovie() {
           <div className="add-info">
             <h3>Language</h3>
             <select
+              required={true}
               value={language}
               onChange={(e) => setLanguage(e.target.value)}
             >
+              {" "}
+              <option>--select-language--</option>
               <option value="Hindi">Hindi</option>
               <option value="English">English</option>
               <option value="Tamil தமிழ்">தமிழ்</option>
@@ -264,7 +312,28 @@ function AddMovie() {
                           opacity: "0.8",
                         }}
                       >
-                        <CloudUpload />
+                        {" "}
+                        {isUploading ? (
+                          // percent === 100 ? (
+                          //   <img
+                          //     style={{
+                          //       width: "50px",
+                          //       height: "50px",
+                          //       borderRadius: "50%",
+                          //     }}
+                          //     src={check}
+                          //     alt=""
+                          //   />
+                          // ) : (
+                          <>
+                            {percent > 0 && (
+                              <CircularProgressWithLabel value={percent} />
+                            )}
+                          </>
+                        ) : (
+                          // )
+                          <CloudUpload />
+                        )}
                       </div>
                     </>
                   )}

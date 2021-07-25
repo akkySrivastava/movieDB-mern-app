@@ -158,3 +158,15 @@
   bottom: 1px;
   top: 1px;
 }
+
+.MuiTypography-colorTextSecondary {
+  color: #ddd !important;
+}
+
+.MuiTypography-caption {
+  font-size: 1rem !important;
+}
+
+.MuiCircularProgress-colorPrimary {
+  color: aqua !important;
+}
