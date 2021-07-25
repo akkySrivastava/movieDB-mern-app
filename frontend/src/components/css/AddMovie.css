@@ -1,0 +1,160 @@
+.add-movie {
+  display: flex;
+  width: 100%;
+}
+
+.add-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.add-data {
+  display: flex;
+  flex-direction: column;
+  /* padding: 30px 20px; */
+  /* margin: 0 10px 20px; */
+  margin-top: 20px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  /* background-color: white; */
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.add-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px;
+  width: 90%;
+  max-width: 700px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.add-info > h3 {
+  color: #ddd;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.add-info > input {
+  padding: 7px;
+  background-color: transparent;
+  outline: none;
+  border: 1px solid aqua;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.add-info > select {
+  padding: 7px;
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid aqua;
+  border-radius: 3px;
+}
+
+.add-info > select option {
+  color: #222;
+}
+
+.add-info > .img-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  border: 1px dashed aqua;
+  color: #ddd;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  background-image: linear-gradient(90deg, #042727, #051421);
+}
+
+.img-container:hover {
+  transform: scale(0.98);
+  background-image: linear-gradient(90deg, #051421, #042727);
+}
+
+.img-container > p:first-child {
+  font-size: 5rem;
+}
+
+.img-container > p {
+  font-size: 2rem;
+}
+
+.img-container > input {
+  display: none;
+}
+
+.vid-container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 250px;
+  padding: 5px;
+  border: 1px dashed aqua;
+  color: #ddd;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  background-image: linear-gradient(90deg, #042727, #051421);
+}
+
+.vid-container:hover {
+  transform: scale(0.98);
+  background-image: linear-gradient(90deg, #051421, #042727);
+}
+
+.vid-container > p {
+  display: flex;
+  font-size: 2rem;
+}
+
+.vid-container > p:first-child {
+  font-size: 5rem;
+}
+
+.vid-container > input {
+  display: none;
+}
+
+.add-container > button {
+  padding: 10px;
+  width: 30%;
+  max-width: 280px;
+  margin-top: 20px;
+  background-color: transparent;
+  outline: none;
+  border: 1px solid aqua;
+  font-weight: 500;
+  font-size: 1.1rem;
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+  background-image: linear-gradient(90deg, #051421, #042727);
+  transition: transform 0.5s ease;
+  margin-bottom: 20px;
+}
+
+.add-container > button:hover {
+  transform: scale(0.9);
+  background-image: linear-gradient(90deg, #042727, #051421);
+}
+
+.video {
+  /* position: absolute; */
+  width: 100% !important;
+  height: 250px !important;
+  bottom: 1px;
+  top: 1px;
+}

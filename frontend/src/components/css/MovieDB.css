@@ -1,0 +1,125 @@
+.movie {
+  display: flex;
+  width: 100%;
+}
+
+.movie-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.movie-container > h1 {
+  text-align: center;
+  width: 100%;
+  color: #ddd;
+  margin-top: 10px;
+  font-weight: 400;
+}
+
+.movie-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  /* margin-top: 20px; */
+}
+
+video {
+  height: 325px !important;
+  width: 100%;
+}
+
+.movie-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 400px;
+  min-height: fit-content;
+  max-width: 600px;
+  padding: 0px 5px 20px 5px;
+  margin: 20px 5px 20px 5px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.movie-content > img {
+  width: 100%;
+  max-width: 700px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.movie-content > h3 {
+  color: white;
+  font-weight: 400;
+  margin: 5px 10px;
+}
+
+.movie-content > p {
+  margin: 0px 10px;
+  color: aqua;
+}
+
+.MuiIconButton-root {
+  color: aqua !important;
+}
+
+.MuiButtonBase-root {
+  background-color: #020120;
+  opacity: 0.8;
+}
+
+.MuiIconButton-label > .MuiSvgIcon-root {
+  font-size: 8rem;
+}
+
+.MuiIconButton-label > .MuiSvgIcon-root:hover {
+  color: #020120;
+}
+
+.movie-content > div {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  height: 100% !important;
+}
+
+@media screen and (min-width: 1280px) {
+  .movie-contents {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 500px;
+    align-items: center;
+    place-items: center;
+    width: 100%;
+  }
+  .movie-content {
+    max-width: "90vw";
+  }
+
+  .movie-content > div {
+    width: 90vw !important;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .movie-content {
+    width: 90vw !important;
+  }
+
+  .movie-content > div {
+    width: 90vw !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .movie-content {
+    width: 90vw;
+  }
+
+  .movie-content > div {
+    width: 90vw !important;
+  }
+}
